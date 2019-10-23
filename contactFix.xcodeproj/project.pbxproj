@@ -15,6 +15,8 @@
 		6BFF3172235FA12E0044D9DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BFF3170235FA12E0044D9DC /* LaunchScreen.storyboard */; };
 		6BFF317D235FA12E0044D9DC /* contactFixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFF317C235FA12E0044D9DC /* contactFixTests.swift */; };
 		6BFF3188235FA12E0044D9DC /* contactFixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFF3187235FA12E0044D9DC /* contactFixUITests.swift */; };
+		6BFF3196235FA4D50044D9DC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFF3195235FA4D50044D9DC /* SettingsView.swift */; };
+		6BFF3198235FA6FF0044D9DC /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFF3197235FA6FF0044D9DC /* ContactsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6BFF3162235FA12A0044D9DC /* contactFix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = contactFix.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BFF3162235FA12A0044D9DC /* Contact Fix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contact Fix.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BFF3165235FA12A0044D9DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BFF3167235FA12A0044D9DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6BFF3169235FA12A0044D9DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		6BFF3183235FA12E0044D9DC /* contactFixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = contactFixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BFF3187235FA12E0044D9DC /* contactFixUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactFixUITests.swift; sourceTree = "<group>"; };
 		6BFF3189235FA12E0044D9DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BFF3195235FA4D50044D9DC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		6BFF3197235FA6FF0044D9DC /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +93,7 @@
 		6BFF3163235FA12A0044D9DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6BFF3162235FA12A0044D9DC /* contactFix.app */,
+				6BFF3162235FA12A0044D9DC /* Contact Fix.app */,
 				6BFF3178235FA12E0044D9DC /* contactFixTests.xctest */,
 				6BFF3183235FA12E0044D9DC /* contactFixUITests.xctest */,
 			);
@@ -102,6 +106,8 @@
 				6BFF3165235FA12A0044D9DC /* AppDelegate.swift */,
 				6BFF3167235FA12A0044D9DC /* SceneDelegate.swift */,
 				6BFF3169235FA12A0044D9DC /* ContentView.swift */,
+				6BFF3195235FA4D50044D9DC /* SettingsView.swift */,
+				6BFF3197235FA6FF0044D9DC /* ContactsView.swift */,
 				6BFF316B235FA12E0044D9DC /* Assets.xcassets */,
 				6BFF3170235FA12E0044D9DC /* LaunchScreen.storyboard */,
 				6BFF3173235FA12E0044D9DC /* Info.plist */,
@@ -153,7 +159,7 @@
 			);
 			name = contactFix;
 			productName = contactFix;
-			productReference = 6BFF3162235FA12A0044D9DC /* contactFix.app */;
+			productReference = 6BFF3162235FA12A0044D9DC /* Contact Fix.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6BFF3177235FA12E0044D9DC /* contactFixTests */ = {
@@ -268,7 +274,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BFF3166235FA12A0044D9DC /* AppDelegate.swift in Sources */,
+				6BFF3196235FA4D50044D9DC /* SettingsView.swift in Sources */,
 				6BFF3168235FA12A0044D9DC /* SceneDelegate.swift in Sources */,
+				6BFF3198235FA6FF0044D9DC /* ContactsView.swift in Sources */,
 				6BFF316A235FA12A0044D9DC /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,12 +447,13 @@
 				DEVELOPMENT_TEAM = SZP43QR59Q;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = contactFix/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.dediego.contactFix;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Contact Fix";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -459,12 +468,13 @@
 				DEVELOPMENT_TEAM = SZP43QR59Q;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = contactFix/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.dediego.contactFix;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Contact Fix";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

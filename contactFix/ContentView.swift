@@ -9,8 +9,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var selectedView = 1
+    
     var body: some View {
-        Text("Hello, World!")
+        TabView(selection: $selectedView) {
+            ContactsTab()
+            SettingsTab()
+        }
     }
 }
 
