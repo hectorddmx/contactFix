@@ -18,15 +18,6 @@ struct SettingsView: View {
     }
 }
 
-struct SettingsTab: View {
-    var body: some View {
-        SettingsView().tabItem {
-            Text("Settings")
-            Image(systemName: "gear")
-        }.tag(2)
-    }
-}
-
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()

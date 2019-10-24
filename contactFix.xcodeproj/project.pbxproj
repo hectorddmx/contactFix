@@ -13,28 +13,9 @@
 		6BFF316C235FA12E0044D9DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BFF316B235FA12E0044D9DC /* Assets.xcassets */; };
 		6BFF316F235FA12E0044D9DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BFF316E235FA12E0044D9DC /* Preview Assets.xcassets */; };
 		6BFF3172235FA12E0044D9DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BFF3170235FA12E0044D9DC /* LaunchScreen.storyboard */; };
-		6BFF317D235FA12E0044D9DC /* contactFixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFF317C235FA12E0044D9DC /* contactFixTests.swift */; };
-		6BFF3188235FA12E0044D9DC /* contactFixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFF3187235FA12E0044D9DC /* contactFixUITests.swift */; };
 		6BFF3196235FA4D50044D9DC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFF3195235FA4D50044D9DC /* SettingsView.swift */; };
 		6BFF3198235FA6FF0044D9DC /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFF3197235FA6FF0044D9DC /* ContactsView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		6BFF3179235FA12E0044D9DC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6BFF315A235FA12A0044D9DC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6BFF3161235FA12A0044D9DC;
-			remoteInfo = contactFix;
-		};
-		6BFF3184235FA12E0044D9DC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6BFF315A235FA12A0044D9DC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6BFF3161235FA12A0044D9DC;
-			remoteInfo = contactFix;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		6BFF3162235FA12A0044D9DC /* Contact Fix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contact Fix.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,12 +26,6 @@
 		6BFF316E235FA12E0044D9DC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6BFF3171235FA12E0044D9DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BFF3173235FA12E0044D9DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6BFF3178235FA12E0044D9DC /* contactFixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = contactFixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6BFF317C235FA12E0044D9DC /* contactFixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactFixTests.swift; sourceTree = "<group>"; };
-		6BFF317E235FA12E0044D9DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6BFF3183235FA12E0044D9DC /* contactFixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = contactFixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6BFF3187235FA12E0044D9DC /* contactFixUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactFixUITests.swift; sourceTree = "<group>"; };
-		6BFF3189235FA12E0044D9DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BFF3195235FA4D50044D9DC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		6BFF3197235FA6FF0044D9DC /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,29 +38,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6BFF3175235FA12E0044D9DC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6BFF3180235FA12E0044D9DC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B9D38642360A53D00697C26 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6BFF3169235FA12A0044D9DC /* ContentView.swift */,
+				6B9D38652360A54800697C26 /* Settings */,
+				6B9D38662360A54F00697C26 /* Contacts */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6B9D38652360A54800697C26 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6BFF3195235FA4D50044D9DC /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		6B9D38662360A54F00697C26 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				6BFF3197235FA6FF0044D9DC /* ContactsView.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
 		6BFF3159235FA12A0044D9DC = {
 			isa = PBXGroup;
 			children = (
 				6BFF3164235FA12A0044D9DC /* contactFix */,
-				6BFF317B235FA12E0044D9DC /* contactFixTests */,
-				6BFF3186235FA12E0044D9DC /* contactFixUITests */,
 				6BFF3163235FA12A0044D9DC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,8 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				6BFF3162235FA12A0044D9DC /* Contact Fix.app */,
-				6BFF3178235FA12E0044D9DC /* contactFixTests.xctest */,
-				6BFF3183235FA12E0044D9DC /* contactFixUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,12 +88,10 @@
 			children = (
 				6BFF3165235FA12A0044D9DC /* AppDelegate.swift */,
 				6BFF3167235FA12A0044D9DC /* SceneDelegate.swift */,
-				6BFF3169235FA12A0044D9DC /* ContentView.swift */,
-				6BFF3195235FA4D50044D9DC /* SettingsView.swift */,
-				6BFF3197235FA6FF0044D9DC /* ContactsView.swift */,
-				6BFF316B235FA12E0044D9DC /* Assets.xcassets */,
 				6BFF3170235FA12E0044D9DC /* LaunchScreen.storyboard */,
 				6BFF3173235FA12E0044D9DC /* Info.plist */,
+				6BFF316B235FA12E0044D9DC /* Assets.xcassets */,
+				6B9D38642360A53D00697C26 /* Views */,
 				6BFF316D235FA12E0044D9DC /* Preview Content */,
 			);
 			path = contactFix;
@@ -122,24 +103,6 @@
 				6BFF316E235FA12E0044D9DC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		6BFF317B235FA12E0044D9DC /* contactFixTests */ = {
-			isa = PBXGroup;
-			children = (
-				6BFF317C235FA12E0044D9DC /* contactFixTests.swift */,
-				6BFF317E235FA12E0044D9DC /* Info.plist */,
-			);
-			path = contactFixTests;
-			sourceTree = "<group>";
-		};
-		6BFF3186235FA12E0044D9DC /* contactFixUITests */ = {
-			isa = PBXGroup;
-			children = (
-				6BFF3187235FA12E0044D9DC /* contactFixUITests.swift */,
-				6BFF3189235FA12E0044D9DC /* Info.plist */,
-			);
-			path = contactFixUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,42 +125,6 @@
 			productReference = 6BFF3162235FA12A0044D9DC /* Contact Fix.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6BFF3177235FA12E0044D9DC /* contactFixTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6BFF318F235FA12E0044D9DC /* Build configuration list for PBXNativeTarget "contactFixTests" */;
-			buildPhases = (
-				6BFF3174235FA12E0044D9DC /* Sources */,
-				6BFF3175235FA12E0044D9DC /* Frameworks */,
-				6BFF3176235FA12E0044D9DC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6BFF317A235FA12E0044D9DC /* PBXTargetDependency */,
-			);
-			name = contactFixTests;
-			productName = contactFixTests;
-			productReference = 6BFF3178235FA12E0044D9DC /* contactFixTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		6BFF3182235FA12E0044D9DC /* contactFixUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6BFF3192235FA12E0044D9DC /* Build configuration list for PBXNativeTarget "contactFixUITests" */;
-			buildPhases = (
-				6BFF317F235FA12E0044D9DC /* Sources */,
-				6BFF3180235FA12E0044D9DC /* Frameworks */,
-				6BFF3181235FA12E0044D9DC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6BFF3185235FA12E0044D9DC /* PBXTargetDependency */,
-			);
-			name = contactFixUITests;
-			productName = contactFixUITests;
-			productReference = 6BFF3183235FA12E0044D9DC /* contactFixUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -210,14 +137,6 @@
 				TargetAttributes = {
 					6BFF3161235FA12A0044D9DC = {
 						CreatedOnToolsVersion = 11.2;
-					};
-					6BFF3177235FA12E0044D9DC = {
-						CreatedOnToolsVersion = 11.2;
-						TestTargetID = 6BFF3161235FA12A0044D9DC;
-					};
-					6BFF3182235FA12E0044D9DC = {
-						CreatedOnToolsVersion = 11.2;
-						TestTargetID = 6BFF3161235FA12A0044D9DC;
 					};
 				};
 			};
@@ -235,8 +154,6 @@
 			projectRoot = "";
 			targets = (
 				6BFF3161235FA12A0044D9DC /* contactFix */,
-				6BFF3177235FA12E0044D9DC /* contactFixTests */,
-				6BFF3182235FA12E0044D9DC /* contactFixUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -249,20 +166,6 @@
 				6BFF3172235FA12E0044D9DC /* LaunchScreen.storyboard in Resources */,
 				6BFF316F235FA12E0044D9DC /* Preview Assets.xcassets in Resources */,
 				6BFF316C235FA12E0044D9DC /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6BFF3176235FA12E0044D9DC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6BFF3181235FA12E0044D9DC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,36 +184,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6BFF3174235FA12E0044D9DC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6BFF317D235FA12E0044D9DC /* contactFixTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6BFF317F235FA12E0044D9DC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6BFF3188235FA12E0044D9DC /* contactFixUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		6BFF317A235FA12E0044D9DC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6BFF3161235FA12A0044D9DC /* contactFix */;
-			targetProxy = 6BFF3179235FA12E0044D9DC /* PBXContainerItemProxy */;
-		};
-		6BFF3185235FA12E0044D9DC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6BFF3161235FA12A0044D9DC /* contactFix */;
-			targetProxy = 6BFF3184235FA12E0044D9DC /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6BFF3170235FA12E0044D9DC /* LaunchScreen.storyboard */ = {
@@ -480,90 +354,6 @@
 			};
 			name = Release;
 		};
-		6BFF3190235FA12E0044D9DC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SZP43QR59Q;
-				INFOPLIST_FILE = contactFixTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.dediego.contactFixTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/contactFix.app/contactFix";
-			};
-			name = Debug;
-		};
-		6BFF3191235FA12E0044D9DC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SZP43QR59Q;
-				INFOPLIST_FILE = contactFixTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.dediego.contactFixTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/contactFix.app/contactFix";
-			};
-			name = Release;
-		};
-		6BFF3193235FA12E0044D9DC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SZP43QR59Q;
-				INFOPLIST_FILE = contactFixUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.dediego.contactFixUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = contactFix;
-			};
-			name = Debug;
-		};
-		6BFF3194235FA12E0044D9DC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SZP43QR59Q;
-				INFOPLIST_FILE = contactFixUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.dediego.contactFixUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = contactFix;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -581,24 +371,6 @@
 			buildConfigurations = (
 				6BFF318D235FA12E0044D9DC /* Debug */,
 				6BFF318E235FA12E0044D9DC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6BFF318F235FA12E0044D9DC /* Build configuration list for PBXNativeTarget "contactFixTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6BFF3190235FA12E0044D9DC /* Debug */,
-				6BFF3191235FA12E0044D9DC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6BFF3192235FA12E0044D9DC /* Build configuration list for PBXNativeTarget "contactFixUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6BFF3193235FA12E0044D9DC /* Debug */,
-				6BFF3194235FA12E0044D9DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
