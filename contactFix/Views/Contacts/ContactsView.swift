@@ -45,9 +45,19 @@ struct ContactsView: View {
     
     @EnvironmentObject var store: ContactStore
     
+    @State private var displayMode: Int = 1
+    
     var body: some View {
         VStack{
             Text("Contacts")
+            
+            Picker("Show all contacts?", selection: $displayMode) {
+                Text("All")
+                Text("No numbers")
+                Text("Bad phone numbers")
+                Text("No names")
+            }.pickerStyle(SegmentedPickerStyle())
+            
             if store.error == nil {
                 ContactsList(contacts: store.contacts).onAppear{
                     DispatchQueue.main.async {
