@@ -59,6 +59,18 @@
 			path = Contacts;
 			sourceTree = "<group>";
 		};
+		6BEA001A23621CE900053B32 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6BFF3165235FA12A0044D9DC /* AppDelegate.swift */,
+				6BFF3167235FA12A0044D9DC /* SceneDelegate.swift */,
+				6BFF3170235FA12E0044D9DC /* LaunchScreen.storyboard */,
+				6BFF3173235FA12E0044D9DC /* Info.plist */,
+				6BFF316B235FA12E0044D9DC /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		6BFF3159235FA12A0044D9DC = {
 			isa = PBXGroup;
 			children = (
@@ -78,11 +90,7 @@
 		6BFF3164235FA12A0044D9DC /* contactFix */ = {
 			isa = PBXGroup;
 			children = (
-				6BFF3165235FA12A0044D9DC /* AppDelegate.swift */,
-				6BFF3167235FA12A0044D9DC /* SceneDelegate.swift */,
-				6BFF3170235FA12E0044D9DC /* LaunchScreen.storyboard */,
-				6BFF3173235FA12E0044D9DC /* Info.plist */,
-				6BFF316B235FA12E0044D9DC /* Assets.xcassets */,
+				6BEA001A23621CE900053B32 /* Supporting Files */,
 				6B9D38642360A53D00697C26 /* Views */,
 				6BFF316D235FA12E0044D9DC /* Preview Content */,
 			);
@@ -312,7 +320,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"contactFix/Preview Content\"";
 				DEVELOPMENT_TEAM = SZP43QR59Q;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = contactFix/Info.plist;
+				INFOPLIST_FILE = "contactFix/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -333,7 +341,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"contactFix/Preview Content\"";
 				DEVELOPMENT_TEAM = SZP43QR59Q;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = contactFix/Info.plist;
+				INFOPLIST_FILE = "contactFix/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

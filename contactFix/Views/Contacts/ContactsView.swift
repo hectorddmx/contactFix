@@ -9,6 +9,7 @@
 import SwiftUI
 import Contacts
 import os
+import Combine
 
 enum ContactFilterType: Int, CaseIterable, Identifiable {
     
@@ -17,7 +18,6 @@ enum ContactFilterType: Int, CaseIterable, Identifiable {
     case all = 0
     case missingPhone
     case missingName
-    case badPhoneFormat
     
     var text: some View {
         let _text: Text
@@ -28,8 +28,6 @@ enum ContactFilterType: Int, CaseIterable, Identifiable {
             _text = Text("No Phone")
         case .missingName:
             _text = Text("No Name")
-        case .badPhoneFormat:
-            _text = Text("Bad Format")
         }
         return _text.tag(self)
     }
@@ -84,18 +82,38 @@ struct ContactsView: View {
     
     @State private var displayMode: ContactFilterType = .all
     
+    var contacts: (list: [CNContact], count: Int) {
+        switch displayMode {
+        case .all:
+            return (list: store.contacts, count: store.contacts.count)
+        case .missingPhone:
+            let result = store.contacts.filter { $0.phoneNumbers.count == 0 }
+            return (list: result, count: result.count)
+        case .missingName:
+            let result = store.contacts.filter { $0.name.isEmpty }
+            return (list: result, count: result.count)
+        }
+    }
+    
     var body: some View {
-        VStack{
-            Text("Contacts")
-            
+        VStack(alignment: .leading) {
             Picker("Show all contacts?", selection: $displayMode) {
                 ForEach(ContactFilterType.allCases, content: { type in
                     type.text
                 })
-            }.pickerStyle(SegmentedPickerStyle())
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding([.leading, .trailing, .bottom, .top], 8)
             
+            
+            VStack {
+                Text("Contacts: ").bold() + Text("\(contacts.count)")
+            }.padding()
+            
+            
+                        
             if store.error == nil {
-                ContactsList(contacts: store.contacts).onAppear{
+                ContactsList(contacts: contacts.list).onAppear{
                     DispatchQueue.main.async {
                         self.store.fetch()
                     }
@@ -117,6 +135,49 @@ struct ContactsList: View {
         List(contacts, id:\.identifier) { (contact: CNContact) in
             ContactRow(contact: contact)
         }
+    }
+}
+
+struct ContactsView_Previews: PreviewProvider {
+
+    static var contactStore: ContactStore = {
+        let store = ContactStore()
+        store.contacts = [
+            goodContact,
+            goodContact,
+            goodContact,
+        ]
+        return store
+    }()
+    
+    static var goodContact: CNContact = {
+        let contact = CNMutableContact()
+        contact.imageData = UIImage(named: "turtlerock")?.pngData()
+        contact.givenName = "John"
+        contact.familyName = "Appleseed"
+        contact.emailAddresses = [
+            CNLabeledValue(label: CNContactEmailAddressesKey, value: "lecksfrawen@gmail.com"),
+            CNLabeledValue(label: CNContactEmailAddressesKey, value: "lecksfrawen@gmail.com"),
+        ]
+        contact.phoneNumbers = [
+            CNLabeledValue(
+                label:CNLabelPhoneNumberiPhone,
+                value:CNPhoneNumber(stringValue:"+52 1 55 55829010")
+            ),
+            CNLabeledValue(
+                label:CNLabelPhoneNumberiPhone,
+                value:CNPhoneNumber(stringValue:"+52 1 55 55829010")
+            ),
+            CNLabeledValue(
+                label:CNLabelSchool,
+                value:CNPhoneNumber(stringValue:"+52 1 55 55829010")
+            ),
+        ]
+        return contact
+    }()
+    
+    static var previews: some View {
+        ContactsView().environmentObject(contactStore)
     }
 }
 
