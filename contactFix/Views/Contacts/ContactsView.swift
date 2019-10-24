@@ -193,7 +193,7 @@ struct ContactRow_Previews: PreviewProvider {
     }()
     
     static var previews: some View {
-        ContactRow(contact: sampleContact).previewLayout(.sizeThatFits)
+        ContactRow(contact: sampleContact).previewLayout(.fixed(width: 400, height: 170))
     }
 }
 
