@@ -112,14 +112,14 @@ struct ContactsView: View {
     @EnvironmentObject var viewModel: ContactViewModel
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Picker("Show all contacts?", selection: $viewModel.displayMode) {
                 ForEach(ContactViewModel.FilterType.allCases, content: { type in
                     type.text
                 })
             }
             .pickerStyle(SegmentedPickerStyle())
-            .padding([.leading, .trailing, .bottom, .top], 8)
+            .padding(8)
             
             VStack {
                 if $viewModel.isDisplayingLoader.wrappedValue {
@@ -127,13 +127,11 @@ struct ContactsView: View {
                 } else {
                     Text("Contacts: ").bold() + Text("\(self.viewModel.contacts.count)")
                 }
-                
-            }.padding()
+            }
+            .padding()
             
-//            LoadingView(isShowing: .constant(true)) {
-
             if viewModel.error == nil {
-                ContactsList(contacts: self.viewModel.contacts).onAppear{
+                ContactsList(contacts: self.viewModel.contacts).onAppear {
                     DispatchQueue.main.async {
                         self.viewModel.fetch()
                     }
@@ -141,8 +139,6 @@ struct ContactsView: View {
             } else {
                 Text("error: \(self.viewModel.error!.localizedDescription)")
             }
-//            }
-                        
             
         }.navigationBarTitle(
             Text("Contact list")
@@ -210,49 +206,4 @@ extension CNContact: Identifiable {
     var name: String {
         return [givenName, middleName, familyName].filter{ $0.count > 0}.joined(separator: " ")
     }
-}
-
-
-struct ActivityIndicator: UIViewRepresentable {
-
-    @Binding var isAnimating: Bool
-    let style: UIActivityIndicatorView.Style
-
-    func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {
-        return UIActivityIndicatorView(style: style)
-    }
-
-    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {
-        isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
-    }
-}
-
-struct LoadingView<Content>: View where Content: View {
-
-    @Binding var isShowing: Bool
-    var content: () -> Content
-
-    var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .center) {
-
-                self.content()
-                    .disabled(self.isShowing)
-                    .blur(radius: self.isShowing ? 3 : 0)
-
-                VStack {
-                    Text("Loading...")
-                    ActivityIndicator(isAnimating: .constant(true), style: .large)
-                }
-                .frame(width: geometry.size.width / 2,
-                       height: geometry.size.height / 5)
-                .background(Color.secondary.colorInvert())
-                .foregroundColor(Color.primary)
-                .cornerRadius(20)
-                .opacity(self.isShowing ? 1 : 0)
-
-            }
-        }
-    }
-
 }
