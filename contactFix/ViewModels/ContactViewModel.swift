@@ -35,6 +35,7 @@ class ContactViewModel: ObservableObject {
         }
     }
     
+    @Published var hasGrantedContactAccess: Bool = false
     @Published var contacts: [CNContact] = []
     @Published var error: Error? = nil
     @Published var displayMode: FilterType = .all {
@@ -45,6 +46,19 @@ class ContactViewModel: ObservableObject {
         }
     }
     @Published var isDisplayingLoader: Bool = true
+    
+    func requestContactAccess() {
+        CNContactStore().requestAccess(for: .contacts) { grantedAccess, err in
+            // err is an optional
+            if let err = err {
+                os_log("Fetching contacts: couldn't get user access, failed with error: %@", err.localizedDescription)
+                return
+            }
+            DispatchQueue.main.async {
+                self.hasGrantedContactAccess = grantedAccess
+            }
+        }
+    }
     
     private func getAllContacts() -> [CNContact] {
         os_log("Fetching contacts")

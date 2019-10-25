@@ -14,6 +14,23 @@ struct ContactsView: View {
     @EnvironmentObject var viewModel: ContactViewModel
     
     var body: some View {
+        VStack {
+            if $viewModel.hasGrantedContactAccess.wrappedValue {
+                ContactsOKView()
+                    .environmentObject(viewModel)
+            } else {
+                ContactsErrorView()
+            }
+        }.onAppear {
+            self.viewModel.requestContactAccess()
+        }
+    }
+}
+
+struct ContactsOKView: View {
+    @EnvironmentObject var viewModel: ContactViewModel
+    
+    var body: some View {
         VStack(alignment: .leading) {
             Picker("Show all contacts?", selection: $viewModel.displayMode) {
                 ForEach(ContactViewModel.FilterType.allCases, content: { type in
@@ -33,15 +50,15 @@ struct ContactsView: View {
             .padding()
             
             if viewModel.error == nil {
-                ContactsList(contacts: self.viewModel.contacts).onAppear {
-                    DispatchQueue.main.async {
-                        self.viewModel.fetch()
-                    }
+                ContactsList(contacts: self.viewModel.contacts)
+                    .onAppear {
+                        DispatchQueue.main.async {
+                            self.viewModel.fetch()
+                        }
                 }
             } else {
                 Text("error: \(self.viewModel.error!.localizedDescription)")
             }
-            
         }.navigationBarTitle(
             Text("Contact list")
         )
