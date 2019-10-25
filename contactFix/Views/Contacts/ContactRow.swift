@@ -185,8 +185,8 @@ struct ContactRow_Previews: PreviewProvider {
             }.environment(\.colorScheme, .light)
                         
             Group {
-                ContactRow(contact: goodContact).previewLayout(.fixed(width: 400, height: 170))
-                ContactRow(contact: badContact).previewLayout(.fixed(width: 400, height: 170))
+                ContactRow(contact: goodContact).darkModeFix().previewLayout(.fixed(width: 400, height: 170))
+                ContactRow(contact: badContact).darkModeFix().previewLayout(.fixed(width: 400, height: 170))
             }.environment(\.colorScheme, .dark)
             
         }

@@ -17,7 +17,7 @@ struct ContentView: View {
     
     var body: some View {
         ContactsView()
-            .environmentObject(ContactStore())
+            .environmentObject(ContactViewModel())
             .tabItem {
                 Text("Contacts")
                 Image(systemName: "person.crop.circle")}
