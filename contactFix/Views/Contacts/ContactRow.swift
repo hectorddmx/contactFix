@@ -20,23 +20,11 @@ struct ContactRow: View {
         colorScheme == .light ? .black : .white
     }
     
-    var contact: CNContact
-    var contactImage: Image {
-        let defaultImage: Image = Image(systemName: "person.crop.circle")
-        if !contact.imageDataAvailable {
-            return defaultImage
-        }
-        guard
-            let data = contact.thumbnailImageData,
-            let image = UIImage(data: data) else {
-                return defaultImage
-        }
-        return Image(uiImage: image)
-    }
+    var contact: CNContact    
 
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
-            contactImage
+            contact.contactImage
                 .resizable()
                 .scaledToFill()
                 .frame(width: 90, height: 90, alignment: .center)
@@ -53,13 +41,9 @@ struct ContactRow: View {
 struct ContactInfo: View {
     var contact: CNContact
     
-    var prettyName: String {
-        contact.name.isEmpty ? "No name saved" : contact.name
-    }
-    
     var body: some View {
         VStack(alignment: .leading) {
-            Text(prettyName).font(.headline)
+            Text(contact.prettyName).font(.headline)
             if contact.phoneNumbers.count != 0 {
                 PhoneNumbersSection(phoneNumbers: contact.phoneNumbers)
             }
@@ -150,43 +134,17 @@ struct EmailAddressesSection: View {
 }
 
 struct ContactRow_Previews: PreviewProvider {
-    static var goodContact: CNContact = {
-        let contact = CNMutableContact()
-        contact.imageData = UIImage(named: "turtlerock")?.pngData()
-        contact.givenName = "John"
-        contact.familyName = "Appleseed"
-        contact.emailAddresses = [
-            CNLabeledValue(label: CNContactEmailAddressesKey, value: "lecksfrawen@gmail.com")
-        ]
-        contact.phoneNumbers = [
-            CNLabeledValue(
-                label:CNLabelPhoneNumberiPhone,
-                value:CNPhoneNumber(stringValue:"+52 1 55 55829010")
-            ),
-            CNLabeledValue(
-                label:CNLabelSchool,
-                value:CNPhoneNumber(stringValue:"+52 1 55 55829010")
-            ),
-        ]
-        return contact
-    }()
-    
-    static var badContact: CNContact = {
-        let contact = CNMutableContact()
-        contact.imageData = nil
-        return contact
-    }()
     
     static var previews: some View {
         Group {
             Group {
-                ContactRow(contact: goodContact).previewLayout(.fixed(width: 400, height: 170))
-                ContactRow(contact: badContact).previewLayout(.fixed(width: 400, height: 170))
+                ContactRow(contact: CNContact.goodExample).previewLayout(.fixed(width: 400, height: 170))
+                ContactRow(contact: CNContact.badExample).previewLayout(.fixed(width: 400, height: 170))
             }.environment(\.colorScheme, .light)
                         
             Group {
-                ContactRow(contact: goodContact).darkModeFix().previewLayout(.fixed(width: 400, height: 170))
-                ContactRow(contact: badContact).darkModeFix().previewLayout(.fixed(width: 400, height: 170))
+                ContactRow(contact: CNContact.goodExample).darkModeFix().previewLayout(.fixed(width: 400, height: 170))
+                ContactRow(contact: CNContact.badExample).darkModeFix().previewLayout(.fixed(width: 400, height: 170))
             }.environment(\.colorScheme, .dark)
             
         }

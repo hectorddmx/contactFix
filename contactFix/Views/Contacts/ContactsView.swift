@@ -8,104 +8,6 @@
 
 import SwiftUI
 import Contacts
-import os
-import Combine
-
-class ContactViewModel: ObservableObject {
-    
-    enum FilterType: Int, CaseIterable, Identifiable {
-        
-        var id: Self { self }
-        
-        case all = 0
-        case missingPhone
-        case missingName
-        
-        var text: some View {
-            let _text: Text
-            switch self {
-            case .all:
-                _text = Text("All")
-            case .missingPhone:
-                _text = Text("No Phone")
-            case .missingName:
-                _text = Text("No Name")
-            }
-            return _text.tag(self)
-        }
-    }
-    
-    @Published var contacts: [CNContact] = []
-    @Published var error: Error? = nil
-    @Published var displayMode: FilterType = .all {
-        didSet {
-            if oldValue != self.displayMode {
-                fetch()
-            }
-        }
-    }
-    @Published var isDisplayingLoader: Bool = true
-    
-    func fetch() {
-        self.isDisplayingLoader = true
-        self.contacts.removeAll(keepingCapacity: true)
-        
-        DispatchQueue.global(qos: .userInitiated).async { [unowned self] in
-            os_log("Fetching contacts")
-            
-            let store = CNContactStore()
-            let keysToFetch: [CNKeyDescriptor] = [
-                CNContactFormatter.descriptorForRequiredKeys(for: .fullName) as CNKeyDescriptor,
-                CNContactGivenNameKey as CNKeyDescriptor,
-                CNContactMiddleNameKey as CNKeyDescriptor,
-                CNContactFamilyNameKey as CNKeyDescriptor,
-                CNContactThumbnailImageDataKey as CNKeyDescriptor,
-                CNContactImageDataAvailableKey as CNKeyDescriptor,
-                CNContactImageDataKey as CNKeyDescriptor,
-                CNContactPhoneNumbersKey as CNKeyDescriptor,
-                CNContactEmailAddressesKey as CNKeyDescriptor,
-            ]
-            
-            var allContainers: [CNContainer] = []
-            do {
-                allContainers = try store.containers(matching: nil)
-            } catch {
-                self.error = error
-                os_log("Error fetching containers")
-            }
-            
-            var newContacts: [CNContact] = []
-            for container in allContainers {
-                let fetchPredicate = CNContact.predicateForContactsInContainer(withIdentifier: container.identifier)
-                
-                do {
-                    os_log("Fetching contacts: for container: %{PUBLIC}@", log: OSLog.default, type: .info, container.name)
-                    let containerResults = try store.unifiedContacts(matching: fetchPredicate, keysToFetch: keysToFetch)
-                    newContacts.append(contentsOf: containerResults)
-                } catch {
-                    os_log("Error fetching containers")
-                }
-            }
-            
-            let filteredContacts: [CNContact]
-            
-            switch self.displayMode {
-            case .all:
-                filteredContacts = newContacts
-            case .missingPhone:
-                filteredContacts = newContacts.filter { $0.phoneNumbers.count == 0 }
-            case .missingName:
-                filteredContacts = newContacts.filter { $0.name.isEmpty }
-            }
-            
-            DispatchQueue.main.async { [unowned self] in
-                self.contacts = filteredContacts
-                os_log("Fetching contacts: succesfull with count = %d", self.contacts.count)
-                self.isDisplayingLoader = false
-            }
-        }
-    }
-}
 
 struct ContactsView: View {
     
@@ -162,48 +64,14 @@ struct ContactsView_Previews: PreviewProvider {
     static var contactStore: ContactViewModel = {
         let store = ContactViewModel()
         store.contacts = [
-            goodContact,
-            goodContact,
-            goodContact,
+            CNContact.goodExample,
+            CNContact.goodExample,
+            CNContact.goodExample,
         ]
         return store
     }()
     
-    static var goodContact: CNContact = {
-        let contact = CNMutableContact()
-        contact.imageData = UIImage(named: "turtlerock")?.pngData()
-        contact.givenName = "John"
-        contact.familyName = "Appleseed"
-        contact.emailAddresses = [
-            CNLabeledValue(label: CNContactEmailAddressesKey, value: "lecksfrawen@gmail.com"),
-            CNLabeledValue(label: CNContactEmailAddressesKey, value: "lecksfrawen@gmail.com"),
-        ]
-        contact.phoneNumbers = [
-            CNLabeledValue(
-                label:CNLabelPhoneNumberiPhone,
-                value:CNPhoneNumber(stringValue:"+52 1 55 55829010")
-            ),
-            CNLabeledValue(
-                label:CNLabelPhoneNumberiPhone,
-                value:CNPhoneNumber(stringValue:"+52 1 55 55829010")
-            ),
-            CNLabeledValue(
-                label:CNLabelSchool,
-                value:CNPhoneNumber(stringValue:"+52 1 55 55829010")
-            ),
-        ]
-        return contact
-    }()
-    
     static var previews: some View {
         ContactsView().environmentObject(contactStore)
-    }
-}
-
-
-extension CNContact: Identifiable {
-    /// Resulting name of searching givenName, middleName, familyName
-    var name: String {
-        return [givenName, middleName, familyName].filter{ $0.count > 0}.joined(separator: " ")
     }
 }
