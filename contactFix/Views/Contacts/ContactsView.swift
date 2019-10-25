@@ -87,10 +87,6 @@ class ContactViewModel: ObservableObject {
                 }
             }
             
-            //        let _ = Just(newContacts)
-            //            .map { (contacts) -> [CNContact] in
-            
-            //        }
             let filteredContacts: [CNContact]
             
             switch self.displayMode {
