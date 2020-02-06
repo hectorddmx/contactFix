@@ -72,7 +72,7 @@ struct EmailRow: View {
     }
     
     var body: some View {
-        HStack {
+        VStack(alignment: .leading, spacing: 0) {
             Text("- \(prettyLabel):").font(.caption).bold()
             Text("\(email.value)").font(.caption)
         }
